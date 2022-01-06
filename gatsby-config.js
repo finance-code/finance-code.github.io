@@ -113,8 +113,9 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 960,
-              withWebp: true
+              maxWidth: 3840,
+              withWebp: true,
+              srcSetBreakpoints: [200, 520, 960]
             }
           },
           {
@@ -221,7 +222,8 @@ module.exports = {
         implementation: require('sass'),
         postCssPlugins: [...postCssPlugins],
         cssLoaderOptions: {
-          camelCase: false
+          camelCase: false,
+          exportLocalsConvention: "asIs"
         }
       }
     },
