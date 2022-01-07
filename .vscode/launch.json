@@ -11,10 +11,16 @@
             "type": "node-terminal"
         },
         {
-            "command": "node --nolazy node_modules/.bin/gatsby develop --inspect-brk",
-            "name": "debug gatsby develop process",
+            "program": "${workspaceRoot}/node_modules/.bin/gatsby",
+            "windows": {
+                "program": "${workspaceRoot}/node_modules/gatsby/dist/bin/gatsby"
+            },
+            "runtimeArgs": ["--nolazy"],
+            "args": ["develop"],
+            "name": "debug gatsby develop",
             "request": "launch",
-            "type": "node-terminal"
-        }
+            "type": "pwa-node",
+            "console": "integratedTerminal"
+        },
     ]
 }

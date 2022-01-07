@@ -141,6 +141,7 @@ module.exports = {
         }
       }
     },
+    // 'gatsby-plugin-scss-typescript',
     // {
     //   resolve: 'gatsby-plugin-sitemap',
     //   options: {
@@ -222,10 +223,11 @@ module.exports = {
         implementation: require('sass'),
         postCssPlugins: [...postCssPlugins],
         cssLoaderOptions: {
-          camelCase: false,
-          exportLocalsConvention: "asIs"
+          modules: {
+            auto: true,
+          },
         }
-      }
+      },
     },
     'gatsby-plugin-flow',
     'gatsby-plugin-optimize-svgs',
