@@ -3,7 +3,7 @@
 const React = require('react');
 const siteConfig = require('../config.js');
 
-// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
+// eslint-disable-next-line
 const katexStylesheet = require('!css-loader!../static/css/katex/katex.min.css');
 
 const onRenderBody = ({ setHeadComponents }) => {
