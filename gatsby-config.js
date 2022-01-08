@@ -115,8 +115,15 @@ module.exports = {
             options: {
               maxWidth: 3840,
               withWebp: true,
-              srcSetBreakpoints: [200, 520, 960]
+              srcSetBreakpoints: [200, 520, 960],
+              linkImagesToOriginal: false,
             }
+          },
+          {
+            resolve: 'gatsby-remark-images-zoom',
+            options: { 
+              background: 'rgba(40, 40, 40, 0.7)',
+            },
           },
           {
             resolve: 'gatsby-remark-responsive-iframe',
