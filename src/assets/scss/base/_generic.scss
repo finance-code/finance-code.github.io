@@ -167,3 +167,8 @@ figcaption {
   }
 
 }
+
+.gatsby-highlight pre code {
+  font-family: $typographic-monospace-font-family;
+  font-size: $typographic-small-font-size;
+}
