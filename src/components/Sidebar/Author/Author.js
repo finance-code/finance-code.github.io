@@ -13,7 +13,7 @@ type Props = {
 };
 
 const Author = ({ author, isIndex }: Props) => (
-  <div className={styles['author']}>
+  <div> { /* className = 'author' */ }
     <Link to="/">
       <img
         src={withPrefix(author.photo)}

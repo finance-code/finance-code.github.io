@@ -16,93 +16,10 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: 'gatsby-plugin-mdx',
       options: {
-        path: `${__dirname}/static`,
-        name: 'assets'
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/static/media`,
-        name: 'media'
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content`,
-        name: 'pages'
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'css',
-        path: `${__dirname}/static/css`
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-feed',
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                site_url: url
-                title
-                description: subtitle
-              }
-            }
-          }
-        `,
-        feeds: [{
-          serialize: ({ query: { site, allMarkdownRemark } }) => (
-            allMarkdownRemark.edges.map((edge) => ({
-              ...edge.node.frontmatter,
-              description: edge.node.frontmatter.description,
-              date: edge.node.frontmatter.date,
-              url: site.siteMetadata.site_url + edge.node.fields.slug,
-              guid: site.siteMetadata.site_url + edge.node.fields.slug,
-              custom_elements: [{ 'content:encoded': edge.node.html }]
-            }))
-          ),
-          query: `
-              {
-                allMarkdownRemark(
-                  limit: 1000,
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                  filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true } } }
-                ) {
-                  edges {
-                    node {
-                      html
-                      fields {
-                        slug
-                      }
-                      frontmatter {
-                        title
-                        date
-                        template
-                        draft
-                        description
-                      }
-                    }
-                  }
-                }
-              }
-            `,
-          output: '/rss.xml',
-          title: siteConfig.title
-        }]
-      }
-    },
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          'gatsby-plugin-netlify-cms-paths',
+        extensions: ['.md', '.mdx'],
+        gatsbyRemarkPlugins: [
           'gatsby-remark-relative-images',
           {
             resolve: 'gatsby-remark-katex',
@@ -135,6 +52,82 @@ module.exports = {
           'gatsby-remark-smartypants',
           'gatsby-remark-external-links'
         ]
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/static`,
+        name: 'assets'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content`,
+        name: 'pages'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'css',
+        path: `${__dirname}/static/css`
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-feed',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                site_url: url
+                title
+                description: subtitle
+              }
+            }
+          }
+        `,
+        feeds: [{
+          serialize: ({ query: { site, allMdx } }) => (
+            allMdx.edges.map((edge) => ({
+              ...edge.node.frontmatter,
+              description: edge.node.frontmatter.description,
+              date: edge.node.frontmatter.date,
+              url: site.siteMetadata.site_url + edge.node.fields.slug,
+              guid: site.siteMetadata.site_url + edge.node.fields.slug,
+              custom_elements: [{ 'content:encoded': edge.node.html }]
+            }))
+          ),
+          query: `
+              {
+                allMdx(
+                  limit: 1000,
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                  filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true } } }
+                ) {
+                  edges {
+                    node {
+                      html
+                      fields {
+                        slug
+                      }
+                      frontmatter {
+                        title
+                        date
+                        template
+                        draft
+                        description
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+          output: '/rss.xml',
+          title: siteConfig.title
+        }]
       }
     },
     'gatsby-transformer-sharp',

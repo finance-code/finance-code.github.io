@@ -2,25 +2,40 @@
 
 const _ = require('lodash');
 const { createFilePath } = require('gatsby-source-filesystem');
+const path = require('path');
+const startsWithDate = /^(\d{4}-\d{2}-\d{2})/;
+
 
 const onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === 'MarkdownRemark') {
-    if (typeof node.frontmatter.slug !== 'undefined') {
-      const dirname = getNode(node.parent).relativeDirectory;
+  if (node.internal.type === 'Mdx') {
+    const dirname = path.basename(getNode(node.parent).relativeDirectory);
+    const postdate = dirname.match(startsWithDate);
+    if (node.frontmatter.slug) {
       createNodeField({
         node,
         name: 'slug',
-        value: `/${dirname}/${node.frontmatter.slug}`
+        value: `/post/${(postdate[1] + '-') || ''}${node.frontmatter.slug}`
       });
     } else {
-      const value = createFilePath({ node, getNode });
-      createNodeField({
-        node,
-        name: 'slug',
-        value
-      });
+      if (node.frontmatter.category === 'post') {
+        const dirname = getNode(node.parent).relativeDirectory;
+        createNodeField({
+          node,
+          name: 'slug',
+          value: `/post/${(postdate[1] + '-') || ''}${dirname}`
+        });
+      }
+      else {
+        const filepath = createFilePath({ node, getNode });
+        const pageDirname = path.dirname(filepath);
+        createNodeField({
+          node,
+          name: 'slug',
+          value: pageDirname
+        });
+      }
     }
 
     if (node.frontmatter.tags) {

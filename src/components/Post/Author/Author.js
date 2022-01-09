@@ -9,10 +9,10 @@ const Author = () => {
 
   return (
     <div className={styles['author']}>
-      <p className={styles['author__bio']}>
+      <p> { /* className='author__bio' */ }
         {author.bio}
         <a
-          className={styles['author__bio-twitter']}
+          className={styles['author__bioTwitter']}
           href={getContactHref('twitter', author.contacts.twitter)}
           rel="noopener noreferrer"
           target="_blank"
