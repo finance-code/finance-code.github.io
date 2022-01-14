@@ -34,7 +34,6 @@
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^6.4.0",
     "gatsby-remark-images-zoom": "^1.1.0",
-    "gatsby-remark-katex": "^6.4.0",
     "gatsby-remark-prismjs": "^6.4.0",
     "gatsby-remark-relative-images": "^2.0.2",
     "gatsby-remark-responsive-iframe": "^5.4.0",
@@ -45,10 +44,13 @@
     "lodash": "^4.17.21",
     "lost": "^8.3.1",
     "normalize-scss": "^7.0.1",
+    "overlayscrollbars": "^1.13.1",
     "prismjs": "^1.25.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-helmet": "^6.1.0",
+    "rehype-katex": "^5.0.0",
+    "remark-math": "^3.0.1",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75"
   },
@@ -62,6 +64,7 @@
     "@babel/preset-flow": "^7.16.7",
     "@babel/preset-react": "^7.16.7",
     "@types/babel-generator": "^6.25.5",
+    "@types/overlayscrollbars": "^1.12.1",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
     "autoprefixer": "^10.4.1",
@@ -80,7 +83,6 @@
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
   "main": "n/a",
   "repository": {
     "type": "git",
@@ -91,8 +93,7 @@
     "trim": "^1.0.1",
     "object-path": "^0.11.8",
     "glob-parent": "^6.0.2",
-    "sass": "^1.46.0",
-    "remark": "^14.0.2"
+    "sass": "^1.46.0"
   },
   "scripts": {
     "build": "gatsby build",

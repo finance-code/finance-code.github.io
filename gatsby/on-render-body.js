@@ -13,7 +13,7 @@ const onRenderBody = ({ setHeadComponents }) => {
     setHeadComponents([
       React.createElement('style', {
         key: 'katex-inline-stylesheet',
-        dangerouslySetInnerHTML: { __html: katexStylesheet.toString() }
+        dangerouslySetInnerHTML: { __html: katexStylesheet.default.toString() + '.katex-display { overflow: auto hidden };'}
       })
     ]);
   }

@@ -3,7 +3,6 @@
  */
 @use "sass:math";
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css'); // pretendard
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap'); // nanum gothic coding
 
 // Colors
 $color-base: #222;
@@ -17,7 +16,7 @@ $color-gray-bg: lighten($color-base, 79%);
 
 // Typographic
 $typographic-font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-$typographic-monospace-font-family: 'Nanum Gothic Coding', 'SF Mono', consolas, monospace;
+$typographic-monospace-font-family: 'SF Mono', Consolas, -apple-system, BlinkMacSystemFont, 'Malgun Gothic', monospace;
 
 $typographic-root-font-size: 100;
 $typographic-base-font-size: 16px;
@@ -36,10 +35,10 @@ $button-height: 35px;
 $button-border-radius: 20px;
 
 // Layout
-$layout-post-single-width: 1170px;
+$layout-post-single-width: 1080px;
 $layout-post-width: $layout-post-single-width - 305px;
 
-$layout-width: 1170px;
+$layout-width: 1080px;
 $layout-breakpoint-sm: 685px;
 $layout-breakpoint-md: 960px;
-$layout-breakpoint-lg: 1200px;
+$layout-breakpoint-lg: 1110px;

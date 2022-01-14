@@ -19,14 +19,10 @@ module.exports = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: ['.md', '.mdx'],
+        remarkPlugins: [require("remark-math")],
+        rehypePlugins: [require("rehype-katex")],
         gatsbyRemarkPlugins: [
           'gatsby-remark-relative-images',
-          {
-            resolve: 'gatsby-remark-katex',
-            options: {
-              strict: 'ignore'
-            }
-          },
           {
             resolve: 'gatsby-remark-images',
             options: {
