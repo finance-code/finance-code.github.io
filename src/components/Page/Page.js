@@ -11,7 +11,7 @@ const Page = ({ title, children }: Props) => {
 
   useEffect(() => {
     pageRef.current.scrollIntoView();
-  });
+  }, []);
 
   return (
     <div ref={pageRef} className={styles['page']}>

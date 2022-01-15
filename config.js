@@ -8,7 +8,7 @@ module.exports = {
   copyright: '© Minje Jeon, All rights reserved.',
   disqusShortname: '',
   postsPerPage: 10,
-  googleAnalyticsId: '',
+  googleAnalyticsId: 'G-S401EJ34RZ',
   useKatex: true,
   menu: [
     {
