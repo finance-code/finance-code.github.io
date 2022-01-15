@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-category-template-js",
+    "path": "/category/deep-learning",
+    "result": {"data":{"allMdx":{"edges":[{"node":{"fields":{"categorySlug":"/category/deep-learning/","slug":"/posts/2016-08-07-min-char-rnn-한글-주해-2"},"frontmatter":{"date":"2016-08-07 23:00","description":null,"category":"deep learning","title":"min-char-rnn 한글 주해(2) - 메인 루프"}}},{"node":{"fields":{"categorySlug":"/category/deep-learning/","slug":"/posts/2016-08-02-min-char-rnn-한글-주해-1"},"frontmatter":{"date":"2016-08-02 19:40","description":null,"category":"deep learning","title":"min-char-rnn 한글 주해(1) - 데이터 준비, 변수 초기화"}}}]}},"pageContext":{"category":"deep learning","currentPage":0,"postsLimit":10,"postsOffset":0,"prevPagePath":"/category/deep-learning","nextPagePath":"/category/deep-learning/page/1","hasPrevPage":false,"hasNextPage":false}},
+    "staticQueryHashes": ["1194534567","4207441578","825871152"]}
