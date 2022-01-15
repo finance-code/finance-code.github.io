@@ -44,7 +44,6 @@
     "lodash": "^4.17.21",
     "lost": "^8.3.1",
     "normalize-scss": "^7.0.1",
-    "overlayscrollbars": "^1.13.1",
     "prismjs": "^1.25.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
