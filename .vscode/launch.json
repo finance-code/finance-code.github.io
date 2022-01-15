@@ -4,6 +4,7 @@
     // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
     "version": "0.2.0",
     "configurations": [
+
         {
             "command": "gatsby develop",
             "name": "gatsby develop",
@@ -21,6 +22,12 @@
             "request": "launch",
             "type": "pwa-node",
             "console": "integratedTerminal"
+        },
+        {
+            "command": "gatsby build",
+            "name": "gatsby build",
+            "request": "launch",
+            "type": "node-terminal"
         },
     ]
 }

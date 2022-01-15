@@ -137,38 +137,43 @@ module.exports = {
         }
       }
     },
-    // 'gatsby-plugin-scss-typescript',
-    // {
-    //   resolve: 'gatsby-plugin-sitemap',
-    //   options: {
-    //     query: `
-    //       {
-    //         site {
-    //           siteMetadata {
-    //             siteUrl: url
-    //           }
-    //         }
-    //         allSitePage(
-    //           filter: {
-    //             path: { regex: "/^(?!/404/|/404.html|/dev-404-page/)/" }
-    //           }
-    //         ) {
-    //           edges {
-    //             node {
-    //               path
-    //             }
-    //           }
-    //         }
-    //       }
-    //     `,
-    //     output: '/sitemap.xml',
-    //     serialize: ({ site, allSitePage }) => allSitePage.edges.map((edge) => ({
-    //       url: site.siteMetadata.siteUrl + edge.node.path,
-    //       changefreq: 'daily',
-    //       priority: 0.7
-    //     }))
-    //   }
-    // },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl: url
+              }
+            }
+            allSitePage(
+              filter: {
+                path: { regex: "/^(?!/404/|/404.html|/dev-404-page/)/" }
+              }
+            ) {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+          }
+        `,
+        output: '/sitemap.xml',
+        resolvePages: ({ site, allSitePage }) => {
+          return Array.from(allSitePage.edges).map(
+            (edge) => ({path: edge.node.path})
+          )
+        },
+        resolvePagePath: ({ path }) => path,
+        serialize: ({ path }) => ({
+          url: path,
+          changefreq: 'daily',
+          priority: 0.7
+        })
+      }
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
