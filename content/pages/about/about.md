@@ -1,6 +1,7 @@
 ---
 title: "About me"
 template: "page"
+comments: false
 socialImage: "image-2.jpg"
 ---
 

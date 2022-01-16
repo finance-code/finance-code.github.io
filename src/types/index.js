@@ -7,7 +7,7 @@ export type RenderCallback = {
 }
 
 export type Entry = {
-  getIn: (string[]) => string;
+  getIn: (data: string[]) => string; 
 }
 
 export type WidgetFor = (string) => string;
@@ -34,6 +34,7 @@ export type Node = {
     category?: string,
     tags?: string[],
     title: string,
+    comments?: string,
     socialImage?: {
       publicURL: string
     }
