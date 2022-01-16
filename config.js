@@ -24,7 +24,7 @@ module.exports = {
       path: '/tags'
     },
   ],
-  author: {
+  author: { 
     name: 'finance/code',
     photo: '/finance_code_logo.png',
     bio: '금융, 코딩 주제 블로그입니다.',
