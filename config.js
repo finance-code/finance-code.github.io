@@ -6,7 +6,7 @@ module.exports = {
   title: 'finance/code blog',
   subtitle: '금융, 코딩 주제 블로그입니다.',
   copyright: '© Minje Jeon, All rights reserved.',
-  utterancesRepo: '',
+  utterancesRepo: 'finance-code/finance-code-blog-comments',
   postsPerPage: 10,
   googleAnalyticsId: 'G-S401EJ34RZ',
   useKatex: true,
