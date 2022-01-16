@@ -26,7 +26,7 @@ const Feed = ({ edges }: Props) => (
         <h2 className={styles['feed__itemTitle']}>
           <Link className={styles['feed__itemTitleLink']} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</Link>
         </h2>
-        <p className={styles['feed__itemDescription']}>{edge.node.frontmatter.description}</p>
+        <p className={styles['feed__itemDescription']}>{edge.node.frontmatter.description || edge.node.excerpt }</p>
         <Link className={styles['feed__itemReadmore']} to={edge.node.fields.slug}>Read</Link>
       </div>
     ))}

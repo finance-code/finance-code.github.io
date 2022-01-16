@@ -7,6 +7,7 @@ import Page from '../components/Page';
 import { useSiteMetadata } from '../hooks';
 import type { Mdx } from '../types';
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import Comments from '../components/Comments';
 
 type Props = {
   data: {
@@ -15,10 +16,11 @@ type Props = {
 };
 
 const PageTemplate = ({ data }: Props) => {
-  const { title: siteTitle, subtitle: siteSubtitle } = useSiteMetadata();
+  const { title: siteTitle, subtitle: siteSubtitle, utterancesRepo } = useSiteMetadata();
   const { body: pageBody } = data.mdx;
   const { frontmatter } = data.mdx;
-  const { title: pageTitle, description: pageDescription = '', socialImage } = frontmatter;
+  const { title: pageTitle, description: pageDescription = '', socialImage, comments } = frontmatter;
+  const displayComments = (comments == null) ? true : comments;
   const metaDescription = pageDescription || siteSubtitle;
   const socialImageUrl = socialImage?.publicURL;
 
@@ -29,6 +31,7 @@ const PageTemplate = ({ data }: Props) => {
         <div>
           <MDXRenderer>{pageBody}</MDXRenderer>
         </div>
+        { utterancesRepo && displayComments && <Comments repo={utterancesRepo} /> }
       </Page>
     </Layout>
   );
@@ -43,6 +46,7 @@ export const query = graphql`
         title
         date
         description
+        comments
         socialImage {
           publicURL
         }

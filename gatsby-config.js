@@ -10,7 +10,7 @@ module.exports = {
     title: siteConfig.title,
     subtitle: siteConfig.subtitle,
     copyright: siteConfig.copyright,
-    disqusShortname: siteConfig.disqusShortname,
+    utterancesRepo: siteConfig.utterancesRepo,
     menu: siteConfig.menu,
     author: siteConfig.author
   },
@@ -89,7 +89,7 @@ module.exports = {
           serialize: ({ query: { site, allMdx } }) => (
             allMdx.edges.map((edge) => ({
               ...edge.node.frontmatter,
-              description: edge.node.frontmatter.description,
+              description: edge.node.frontmatter.description || edge.node.excerpt,
               date: edge.node.frontmatter.date,
               url: site.siteMetadata.site_url + edge.node.fields.slug,
               guid: site.siteMetadata.site_url + edge.node.fields.slug,
@@ -106,6 +106,7 @@ module.exports = {
                   edges {
                     node {
                       html
+                      excerpt
                       fields {
                         slug
                       }
