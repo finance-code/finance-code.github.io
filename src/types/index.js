@@ -39,7 +39,8 @@ export type Node = {
     }
   },
   body: string,
-  id: string
+  id: string,
+  excerpt: string,
 };
 
 export type Edge = {
