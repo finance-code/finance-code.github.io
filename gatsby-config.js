@@ -161,7 +161,7 @@ module.exports = {
             }
           }
         `,
-        output: '/sitemap.xml',
+        output: '/sitemap',
         resolvePages: ({ site, allSitePage }) => {
           return Array.from(allSitePage.edges).map(
             (edge) => ({path: edge.node.path})
