@@ -2,7 +2,7 @@
 title: "Raspberry Pi로 부동산 시세 수집(3) - MariaDB(MySQL) 설치"
 date: "2022-02-20T00:00:00+09:00"
 template: "post"
-draft: true
+draft: false
 category: "Data Engineering"
 description: ""
 tags:
@@ -10,7 +10,57 @@ tags:
   - "Docker"
   - "MariaDB"
   - "MySQL"
-socialImage: ""
+socialImage: "mariadb_colour_logo.svg"
 ---
 
-1231241
+![MariaDB 로고](mariadb_colour_logo.svg)
+
+Docker를 설치했으니[^1], 이제 데이터를 적재할 DB를 만들어 보자.
+
+[^1]: [Raspberry Pi로 부동산 시세 수집(2) - VSCode로 SSH 접속, Docker 설치](2022-01-20-raspberry-vscode-docker-setup)
+
+내가 가지고 있는 Raspberry Pi 3는 32bit Raspberry Pi OS가 설치되어 있다. <https://forums.raspberrypi.com/viewtopic.php?t=275370>을 보면 64bit용 Raspberry Pi OS가 나와있기는 하지만, 아직 안정화 된 것 같지는 않아 보인다. 1GB 램이 달려 있어서 굳이 설치할 필요는 없기도 하다.
+
+문제는 32bit 운영체계는 이제 한물 간지도 한~참 되어서, 32bit를 지원하는 docker image는 많이 없다는 게 문제다. 처음에 MongoDB를 설치해 보려고 했으나, 32비트 지원이 종료되었다.
+
+[Docker Hub](https://hub.docker.com/r/linuxserver/mariadb)에 32bit를 지원하는 MariaDB 이미지가 올라와 있어 설치해 보았다. 나중에 설치한 airflow에서 DB로 사용하고, 다운받은 데이터도 여기에 적재하려고 한다.
+
+`docker pull lscr.io/linuxserver/mariadb`를 입력하면 아키텍쳐에 있는 이미지를 알아서 잘 불러온다.
+
+Raspberry Pi가 켜질때마다 항상 DB가 켜지도록 하기 위해 `.env`, `docker-compose.yml`파일을 아래와 같이 만들어 주고 데이터를 저장할 `data`폴더를 호스트 볼륨으로 만들어주었다.
+
+```ini
+# .env
+MYSQL_ROOT_PASSWORD=<root 계정의 비밀번호>
+MYSQL_DATABASE=<DB 이름>
+MYSQL_USER=<DB 사용자 이름>
+MYSQL_PASSWORD=<DB 사용자 계정 암호>
+```
+
+```yaml
+# docker-compose.yaml
+services:
+  mariadb:
+    image: lscr.io/linuxserver/mariadb
+    container_name: mariadb
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - TZ=Asia/Seoul
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-pisql}
+      - MYSQL_USER=${MYSQL_USER:-pisqluser}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-mysqlpassword}
+    volumes:
+      - ./data:/config
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+```
+
+아래 명령으로 DB를 구동한다
+```
+docker-compose up -d
+```
+
+이제 `<RPI IP>:3306`으로 접속할 수 있다. 
