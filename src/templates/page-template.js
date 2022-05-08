@@ -22,7 +22,7 @@ const PageTemplate = ({ data }: Props) => {
   const { title: pageTitle, description: pageDescription = '', socialImage, comments } = frontmatter;
   const displayComments = (comments == null) ? true : comments;
   const metaDescription = pageDescription || siteSubtitle;
-  const socialImageUrl = socialImage?.publicURL;
+  const socialImageUrl = socialImage;
 
   return (
     <Layout title={`${pageTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImageUrl} >
@@ -47,9 +47,7 @@ export const query = graphql`
         date
         description
         comments
-        socialImage {
-          publicURL
-        }
+        socialImage
       }
     }
   }
