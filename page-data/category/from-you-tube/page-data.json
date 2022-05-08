@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-category-template-js",
+    "path": "/category/from-you-tube",
+    "result": {"data":{"allMdx":{"edges":[{"node":{"fields":{"categorySlug":"/category/from-you-tube/","slug":"/posts/2022-05-08-youtube-3pro-220502-leechul"},"frontmatter":{"date":"2022-05-08T00:00:00+09:00","description":"","category":"From YouTube","title":"유튜브 보기 - 중국 30년 겪어봤지만, 이런 위기는 처음 f. 이철 작가"}}}]}},"pageContext":{"category":"From YouTube","currentPage":0,"postsLimit":10,"postsOffset":0,"prevPagePath":"/category/from-you-tube","nextPagePath":"/category/from-you-tube/page/1","hasPrevPage":false,"hasNextPage":false}},
+    "staticQueryHashes": ["1194534567","4207441578","483687920"]}
