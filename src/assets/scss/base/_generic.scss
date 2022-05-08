@@ -1,7 +1,7 @@
 /** 
  * Generic
  */
-html {
+ html {
   font-size: $typographic-root-font-size;
 }
 
@@ -115,6 +115,10 @@ ul {
   & li {
     padding: 0 5px;
     margin-bottom: 10px;
+  }
+
+  & ul {
+    @include margin-top(0.5);
   }
 
 }
