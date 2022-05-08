@@ -17,7 +17,7 @@ const PostTemplate = ({ data }: Props) => {
   const { frontmatter } = data.mdx;
   const { title: postTitle, description: postDescription = '', socialImage } = frontmatter;
   const metaDescription = postDescription || siteSubtitle;
-  const socialImageUrl = socialImage?.publicURL;
+  const socialImageUrl = socialImage;
 
   return (
     <Layout title={`${postTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImageUrl} >
@@ -41,9 +41,7 @@ export const query = graphql`
         tags
         title
         comments
-        socialImage {
-          publicURL
-        }
+        socialImage
       }
     }
   }
